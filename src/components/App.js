@@ -5,6 +5,19 @@ import LetterForm from './LetterForm';
 import SiteNav from './SiteNav';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.updateOrder = this.updateOrder.bind(this)
+    // initial state
+    this.state = {
+      order: {}
+    };
+  }
+
+  updateOrder(order) {
+    this.setState({ order })
+  }
+
   render() {
     return (
       <div className="App">
