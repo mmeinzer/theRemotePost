@@ -21,8 +21,10 @@ const FieldGroup = ({
 class LetterForm extends React.Component {
   saveOrder(event) {
     event.preventDefault()
+    const order = {}
+    this.props.saveOrder(order)
   }
-  
+
   render() {
     return (
       <form className="order-info" onSubmit={(e) => this.saveOrder(e)}>
@@ -145,7 +147,7 @@ function StateOptions() {
   const stateOptions = Object
     .keys(stateHash)
     .map((state) => state)
-    .map((state) => <option value={state}>{state}</option>);
+    .map((state) => <option key={state} value={state}>{state}</option>);
 
   return (
     <FormControl componentClass="select" placeholder="select">{stateOptions}</FormControl>

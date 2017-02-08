@@ -7,14 +7,14 @@ import SiteNav from './SiteNav';
 class App extends React.Component {
   constructor() {
     super();
-    this.updateOrder = this.updateOrder.bind(this)
+    this.saveOrder = this.saveOrder.bind(this)
     // initial state
     this.state = {
       order: {}
     };
   }
 
-  updateOrder(order) {
+  saveOrder(order) {
     this.setState({ order })
   }
 
@@ -23,7 +23,7 @@ class App extends React.Component {
       <div className="App">
         <SiteNav />
         <Grid>
-          <LetterForm />
+          <LetterForm saveOrder={this.saveOrder}/>
         </Grid>
       </div>
     )
