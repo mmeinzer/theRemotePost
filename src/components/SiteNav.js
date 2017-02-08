@@ -1,8 +1,8 @@
 import React from 'react';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-function SiteNav(props) {
-  return <Navbar inverse collapseOnSelect>
+const SiteNav = (props) =>
+  (<Navbar inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
         <a href="/">The Remote Post</a>
@@ -11,10 +11,10 @@ function SiteNav(props) {
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">About Us</NavItem>
+        <NavItem href="#">Order</NavItem>
+        <NavItem href="#">About</NavItem>
       </Nav>
     </Navbar.Collapse>
-  </Navbar>
-}
+  </Navbar>)
 
 export default SiteNav

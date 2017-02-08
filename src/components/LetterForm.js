@@ -7,75 +7,76 @@ import {
   Button
 } from 'react-bootstrap';
 
-function FieldGroup({
+const FieldGroup = ({
   id,
   label,
   help,
-  ...props
-}) {
-  return (
-    <FormGroup controlId={id}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props}/> {help && <HelpBlock>{help}</HelpBlock>}
-    </FormGroup>
-  );
-}
-
-const letterFormInstance = (
-  <form>
-    <FieldGroup
-      id="rName"
-      type="text"
-      label="Full Name"
-      placeholder="Enter recipient's name"/>
-    <FieldGroup
-      id="rAddress1"
-      type="text"
-      label="Address Line 1"
-      placeholder="Enter recipient's address"
-      help="Street address, P.O. box, company name, c/o"/>
-    <FieldGroup
-      id="rAddress2"
-      type="text"
-      label="Address Line 2"
-      placeholder="Enter recipient's address"
-      help="Apartment, suite , unit, building, floor, etc."/>
-    <FieldGroup
-      id="rCity"
-      type="text"
-      label="City"
-      placeholder="Enter recipient's city or town"/>
-
-    <FormGroup controlId="rState">
-      <ControlLabel>State</ControlLabel>
-      <StateOptions/>
-    </FormGroup>
-
-    <FieldGroup
-      id="rZip"
-      type="text"
-      label="Zip Code"
-      placeholder="Enter recipient's zip code"/>
-
-    <FormGroup controlId="Message">
-      <ControlLabel>Message</ControlLabel>
-      <FormControl componentClass="textarea" placeholder="Enter your message here"/>
-    </FormGroup>
-
-    <FieldGroup
-      id="sEmail"
-      type="email"
-      label="Email address"
-      placeholder="Enter your email"/>
-
-    <Button type="submit">
-      Continue
-    </Button>
-  </form>
+  ...props }) => (
+  <FormGroup controlId={id}>
+    <ControlLabel>{label}</ControlLabel>
+    <FormControl {...props} /> {help && <HelpBlock>{help}</HelpBlock>}
+  </FormGroup>
 );
 
-function LetterForm() {
-  return letterFormInstance;
+class LetterForm extends React.Component {
+  saveOrder(event) {
+    event.preventDefault()
+  }
+  
+  render() {
+    return (
+      <form className="order-info" onSubmit={(e) => this.saveOrder(e)}>
+        <FieldGroup
+          id="rName"
+          type="text"
+          label="Full Name"
+          placeholder="Enter recipient's name" />
+        <FieldGroup
+          id="rAddress1"
+          type="text"
+          label="Address Line 1"
+          placeholder="Enter recipient's address"
+          help="Street address, P.O. box, company name, c/o" />
+        <FieldGroup
+          id="rAddress2"
+          type="text"
+          label="Address Line 2"
+          placeholder="Enter recipient's address"
+          help="Apartment, suite , unit, building, floor, etc." />
+        <FieldGroup
+          id="rCity"
+          type="text"
+          label="City"
+          placeholder="Enter recipient's city or town" />
+
+        <FormGroup controlId="rState">
+          <ControlLabel>State</ControlLabel>
+          <StateOptions />
+        </FormGroup>
+
+        <FieldGroup
+          id="rZip"
+          type="text"
+          label="Zip Code"
+          placeholder="Enter recipient's zip code" />
+
+        <FormGroup controlId="Message">
+          <ControlLabel>Message</ControlLabel>
+          <FormControl componentClass="textarea" placeholder="Enter your message here" />
+        </FormGroup>
+
+        <FieldGroup
+          id="sEmail"
+          type="email"
+          label="Email address"
+          placeholder="Enter your email" />
+
+        <Button type="submit">
+          Continue
+    </Button>
+      </form>
+    );
+  }
 }
 
 function StateOptions() {
