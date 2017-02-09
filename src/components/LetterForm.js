@@ -7,16 +7,16 @@ import {
   Button
 } from 'react-bootstrap';
 
-const FieldGroup = ({
-  id,
-  label,
-  help,
-  ...props }) => (
-  <FormGroup controlId={id}>
-    <ControlLabel>{label}</ControlLabel>
-    <FormControl {...props} /> {help && <HelpBlock>{help}</HelpBlock>}
-  </FormGroup>
-);
+// inputRef={ref => { this.input = ref; }}
+
+function FieldGroup({ id, label, help, inputRef, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} inputRef={inputRef} /> {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  );
+}
 
 class LetterForm extends React.Component {
   saveOrder(event) {
