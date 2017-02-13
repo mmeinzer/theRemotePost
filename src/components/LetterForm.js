@@ -8,8 +8,6 @@ import {
   Radio
 } from 'react-bootstrap';
 
-// inputRef={ref => { this.input = ref; }}
-
 function FieldGroup({ id, label, help, inputRef, ...props }) {
   return (
     <FormGroup controlId={id}>
@@ -20,59 +18,84 @@ function FieldGroup({ id, label, help, inputRef, ...props }) {
 }
 
 class LetterForm extends React.Component {
-  saveOrder(event) {
-    event.preventDefault()
-    const order = {}
+  updateOrder(event) {
+    const order = {
+      rName: this.rName.value,
+      rAddress1: this.rAddress1.value,
+      rAddress2: this.rAddress2.value,
+      rCity: this.rCity.value,
+      rState: this.rState.value,
+      rZip: this.rZip.value,
+      sMessage: this.sMessage.value,
+      sEmail: this.sEmail.value,
+      isAnon: this.anon.checked
+    }
+    console.log(this.anon.checked)
     this.props.saveOrder(order)
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
   }
 
   render() {
     return (
-      <form className="order-info" onSubmit={(e) => this.saveOrder(e)}>
+      <form className="order-info"
+        onSubmit={(e) => this.handleSubmit(e)}
+        onChange={(e) => this.updateOrder(e)}>
         <FieldGroup
           id="rName"
           type="text"
-          label="Full Name"
-          placeholder="Enter recipient's name" />
+          label="Name"
+          placeholder="Enter recipient's name"
+          inputRef={ref => { this.rName = ref; }} />
         <FieldGroup
           id="rAddress1"
           type="text"
           label="Address Line 1"
           placeholder="Enter recipient's address"
-          help="Street address, P.O. box, company name, c/o" />
+          help="Street address, P.O. box, company name, c/o" 
+          inputRef={ref => { this.rAddress1 = ref; }} />
         <FieldGroup
           id="rAddress2"
           type="text"
           label="Address Line 2"
           placeholder="Enter recipient's address"
-          help="Apartment, suite , unit, building, floor, etc." />
+          help="Apartment, suite , unit, building, floor, etc."
+          inputRef={ref => { this.rAddress2 = ref; }} />
         <FieldGroup
           id="rCity"
           type="text"
           label="City"
-          placeholder="Enter recipient's city or town" />
+          placeholder="Enter recipient's city or town"
+          inputRef={ref => { this.rCity = ref; }} />
 
         <FormGroup controlId="rState">
           <ControlLabel>State</ControlLabel>
-          <StateOptions />
+          <StateOptions  inputRef={ref => { this.rState = ref; }}/>
         </FormGroup>
 
         <FieldGroup
           id="rZip"
           type="text"
           label="Zip Code"
-          placeholder="Enter recipient's zip code" />
+          placeholder="Enter recipient's zip code"
+          inputRef={ref => { this.rZip = ref; }} />
 
-        <FormGroup controlId="Message">
+        <FormGroup controlId="sMessage">
           <ControlLabel>Message</ControlLabel>
-          <FormControl componentClass="textarea" placeholder="Enter your message here" />
+          <FormControl componentClass="textarea"
+            placeholder="Enter your message here"
+            style={{ height: 200 }}
+            inputRef={ref => { this.sMessage = ref; }} />
         </FormGroup>
 
         <FieldGroup
           id="sEmail"
           type="email"
           label="Email address"
-          placeholder="Enter your email" />
+          placeholder="Enter your email"
+          inputRef={ref => { this.sEmail = ref; }} />
 
         <FormGroup>
           <ControlLabel>Send anonymously?</ControlLabel>
@@ -80,7 +103,7 @@ class LetterForm extends React.Component {
           <Radio name="anonOption" inline defaultChecked>
             No
           </Radio>
-          <Radio name="anonOption" inline>
+          <Radio name="anonOption" inputRef={ref => { this.anon = ref; }} inline>
             Yes
           </Radio>
         </FormGroup>
@@ -95,8 +118,9 @@ class LetterForm extends React.Component {
   }
 }
 
-function StateOptions() {
+function StateOptions({inputRef}) {
   const stateHash = {
+    "": "",
     "AL": "Alabama",
     "AK": "Alaska",
     "AS": "American Samoa",
@@ -164,7 +188,9 @@ function StateOptions() {
     .map((state) => <option key={state} value={state}>{state}</option>);
 
   return (
-    <FormControl componentClass="select" placeholder="select">{stateOptions}</FormControl>
+    <FormControl componentClass="select" placeholder="select" inputRef={inputRef}>
+      {stateOptions}
+    </FormControl>
   );
 }
 

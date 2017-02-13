@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   saveOrder(order) {
-    this.setState({ order })
+    this.setState({ order: order })
   }
 
   render() {
