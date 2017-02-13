@@ -4,7 +4,8 @@ import {
   ControlLabel,
   FormControl,
   HelpBlock,
-  Button
+  Button,
+  Radio
 } from 'react-bootstrap';
 
 // inputRef={ref => { this.input = ref; }}
@@ -73,9 +74,22 @@ class LetterForm extends React.Component {
           label="Email address"
           placeholder="Enter your email" />
 
-        <Button type="submit">
-          Continue
-    </Button>
+        <FormGroup>
+          <ControlLabel>Send anonymously?</ControlLabel>
+          <br />
+          <Radio name="anonOption" inline defaultChecked>
+            No
+          </Radio>
+          <Radio name="anonOption" inline>
+            Yes
+          </Radio>
+        </FormGroup>
+
+        <FormGroup>
+          <Button type="submit">
+            Continue
+          </Button>
+        </FormGroup>
       </form>
     );
   }

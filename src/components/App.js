@@ -23,7 +23,7 @@ class App extends React.Component {
       <div className="App">
         <SiteNav />
         <Grid>
-          <LetterForm saveOrder={this.saveOrder}/>
+          <LetterForm saveOrder={this.saveOrder} />
         </Grid>
       </div>
     )
