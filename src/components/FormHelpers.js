@@ -81,7 +81,7 @@ export function StateOptions({inputRef}) {
 
   const stateOptions = Object
     .keys(stateHash)
-    .map((state) => <option key={state} value={state}>{state}</option>);
+    .map(state => <option key={state} value={state}>{state}</option>);
 
   return (
     <FormControl componentClass="select" placeholder="select" inputRef={inputRef}>
