@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import { Grid } from 'react-bootstrap';
 import LetterForm from './LetterForm';
 import SiteNav from './SiteNav';
@@ -13,11 +12,9 @@ class App extends React.Component {
       order: {}
     };
   }
-
   saveOrder(order) {
     this.setState({ order: order })
   }
-
   render() {
     return (
       <div className="App">
