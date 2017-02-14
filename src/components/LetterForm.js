@@ -7,15 +7,7 @@ import {
   Button,
   Radio
 } from 'react-bootstrap';
-
-function FieldGroup({ id, label, help, inputRef, ...props }) {
-  return (
-    <FormGroup controlId={id}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props} inputRef={inputRef} /> {help && <HelpBlock>{help}</HelpBlock>}
-    </FormGroup>
-  );
-}
+import SenderInfo from './SenderInfo'
 
 class LetterForm extends React.Component {
   updateOrder(event) {
@@ -30,7 +22,6 @@ class LetterForm extends React.Component {
       sEmail: this.sEmail.value,
       isAnon: this.anon.checked
     }
-    console.log(this.anon.checked)
     this.props.saveOrder(order)
   }
 
@@ -54,7 +45,7 @@ class LetterForm extends React.Component {
           type="text"
           label="Address Line 1"
           placeholder="Enter recipient's address"
-          help="Street address, P.O. box, company name, c/o" 
+          help="Street address, P.O. box, company name, c/o"
           inputRef={ref => { this.rAddress1 = ref; }} />
         <FieldGroup
           id="rAddress2"
@@ -72,7 +63,7 @@ class LetterForm extends React.Component {
 
         <FormGroup controlId="rState">
           <ControlLabel>State</ControlLabel>
-          <StateOptions  inputRef={ref => { this.rState = ref; }}/>
+          <StateOptions inputRef={ref => { this.rState = ref; }} />
         </FormGroup>
 
         <FieldGroup
@@ -108,6 +99,8 @@ class LetterForm extends React.Component {
           </Radio>
         </FormGroup>
 
+        <SenderInfo isAnon={this.props.order.isAnon} context={this}/>
+        
         <FormGroup>
           <Button type="submit">
             Continue
@@ -116,6 +109,15 @@ class LetterForm extends React.Component {
       </form>
     );
   }
+}
+
+function FieldGroup({ id, label, help, inputRef, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} inputRef={inputRef} /> {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  );
 }
 
 function StateOptions({inputRef}) {
