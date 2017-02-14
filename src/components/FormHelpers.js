@@ -81,7 +81,6 @@ export function StateOptions({inputRef}) {
 
   const stateOptions = Object
     .keys(stateHash)
-    .map((state) => state)
     .map((state) => <option key={state} value={state}>{state}</option>);
 
   return (
