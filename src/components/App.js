@@ -1,6 +1,6 @@
 import React from 'react';
 import LetterForm from './LetterForm';
-import SiteNav from './SiteNav';
+import SiteHeader from './SiteHeader';
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <SiteNav />
+        <SiteHeader />
         <LetterForm saveOrder={this.saveOrder} {...this.state} />
       </div>
     )

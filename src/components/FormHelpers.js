@@ -1,23 +1,8 @@
 import React from 'react';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  HelpBlock
-} from 'react-bootstrap';
 
-export function FieldGroup({ id, label, help, inputRef, ...props }) {
-  return (
-    <FormGroup controlId={id}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props} inputRef={inputRef} /> {help && <HelpBlock>{help}</HelpBlock>}
-    </FormGroup>
-  );
-}
-
-export function StateOptions({inputRef}) {
+export const StateOptions = () => {
   const stateHash = {
-    "": "",
+    "QQ": "None",
     "AL": "Alabama",
     "AK": "Alaska",
     "AS": "American Samoa",
@@ -79,13 +64,11 @@ export function StateOptions({inputRef}) {
     "WY": "Wyoming"
   }
 
-  const stateOptions = Object
-    .keys(stateHash)
-    .map(state => <option key={state} value={state}>{state}</option>);
-
   return (
-    <FormControl componentClass="select" placeholder="select" inputRef={inputRef}>
-      {stateOptions}
-    </FormControl>
-  );
+    <select>
+      {Object
+        .keys(stateHash)
+        .map((state, index) => <option key={index} value={state}>{state}</option>)}
+    </select>
+  )
 }

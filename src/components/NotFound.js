@@ -1,12 +1,12 @@
 import React from 'react';
-import SiteNav from './SiteNav';
+import SiteHeader from './SiteHeader';
 
 class NotFound extends React.Component {
   render() {
     return (
       <div className="NotFound">
-        <SiteNav />
-          <h1>Oh no! We can't find that page :(</h1>
+        <SiteHeader />
+        <h1>Oh no! We can't find that page :(</h1>
       </div>
     )
   }
