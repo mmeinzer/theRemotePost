@@ -1,12 +1,4 @@
 import React from 'react';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  HelpBlock,
-  Button,
-  Radio
-} from 'react-bootstrap';
 import SenderInfo from './SenderInfo'
 
 class LetterForm extends React.Component {

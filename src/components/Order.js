@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from 'react-bootstrap';
 import SiteNav from './SiteNav';
 
 class Order extends React.Component {
@@ -7,9 +6,7 @@ class Order extends React.Component {
     return (
       <div className="Order">
         <SiteNav />
-        <Grid>
           <h1>Order</h1>
-        </Grid>
       </div>
     )
   }

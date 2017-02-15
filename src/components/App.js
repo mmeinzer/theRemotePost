@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from 'react-bootstrap';
 import LetterForm from './LetterForm';
 import SiteNav from './SiteNav';
 
@@ -19,9 +18,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <SiteNav />
-        <Grid>
-          <LetterForm saveOrder={this.saveOrder} {...this.state}/>
-        </Grid>
+        <LetterForm saveOrder={this.saveOrder} {...this.state} />
       </div>
     )
   }
