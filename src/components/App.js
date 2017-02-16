@@ -4,7 +4,7 @@ import SitePage from './SitePage';
 
 const App = (props) => {
     return (
-        <SitePage className="App">
+        <SitePage className="app">
             <p className="content">This is our home page for Remote Post</p>
         </SitePage>
     )
