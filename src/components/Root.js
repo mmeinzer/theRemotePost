@@ -5,7 +5,7 @@ import {
     Switch
 } from 'react-router-dom';
 
-import Home from './Home'
+import App from './App'
 import Order from './Order';
 import Checkout from './Checkout';
 import NotFound from './NotFound';
@@ -14,7 +14,7 @@ const Root = () => {
     return (
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={App} />
                     <Route exact path="/order" component={Order} />
                     <Route exact path="/order/checkout" component={Checkout} />
                     <Route component={NotFound} />

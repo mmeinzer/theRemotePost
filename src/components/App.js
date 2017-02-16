@@ -2,12 +2,12 @@ import React from 'react';
 
 import SitePage from './SitePage';
 
-const Home = (props) => {
+const App = (props) => {
     return (
-        <SitePage className="home">
+        <SitePage className="App">
             <p className="content">This is our home page for Remote Post</p>
         </SitePage>
     )
 }
 
-export default Home;
+export default App;
