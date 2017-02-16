@@ -1,13 +1,24 @@
 import React from 'react';
-import SiteHeader from './SiteHeader';
+import LetterForm from './LetterForm';
+import SitePage from './SitePage';
 
 class Order extends React.Component {
+  constructor() {
+    super();
+    this.saveOrder = this.saveOrder.bind(this)
+    // initial state
+    this.state = {
+      order: {}
+    };
+  }
+  saveOrder(order) {
+    this.setState({ order: order })
+  }
   render() {
     return (
-      <div className="Order">
-        <SiteHeader />
-        <h1>Order</h1>
-      </div>
+      <SitePage className="order">
+        <LetterForm saveOrder={this.saveOrder} {...this.state} />
+      </SitePage>
     )
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const StateOptions = () => {
   const stateHash = {
-    "QQ": "None",
+    "--": "None",
     "AL": "Alabama",
     "AK": "Alaska",
     "AS": "American Samoa",
