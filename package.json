@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.8.4"
+    "autoprefixer-stylus": "^0.13.0",
+    "concurrently": "^3.3.0",
+    "react-scripts": "0.8.4",
+    "stylus": "^0.54.5"
   },
   "dependencies": {
     "react": "^15.4.1",
@@ -14,7 +17,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+     "watch": "concurrently --names 'webpack, stylus' --prefix name 'npm run start' 'npm run styles:watch'",
+    "eject": "react-scripts eject",
+    "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
+    "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
+    "deploy": "ns ./build --cmd 'list ./content -s'"
   }
 }
